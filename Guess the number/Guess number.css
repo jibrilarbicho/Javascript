@@ -1,0 +1,32 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  background-color: rgb(192, 192, 39);
+  color: white;
+}
+h2 {
+  background-color: white;
+  color: black;
+  padding: 1.3rem;
+}
+.Agai {
+  display: flex;
+  justify-content: space-between;
+}
+.bottom {
+  display: flex;
+}
+.bot {
+  margin-right: 3rem;
+}
+.text {
+  height: 4rem;
+}
+.num {
+  background-color: azure;
+  padding: 1.3em;
+  width: 12px;
+  color: black;
+  margin-right: 1.4rem;
+}
