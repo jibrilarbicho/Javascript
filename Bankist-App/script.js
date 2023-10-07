@@ -130,7 +130,7 @@ const totalDeposited = movements
   .map((mov) => mov * EuroUSD)
   .reduce((acc, cur, i, arr) => acc + cur, 0);
 console.log(totalDeposited);
-const clacDisplaySummary = function (movements) {
+const calcDisplaySummary = function (movements) {
   const incomes = movements
     .filter((map) => map > 0)
     .reduce((acc, cur) => acc + cur, 0);
@@ -141,5 +141,13 @@ const clacDisplaySummary = function (movements) {
     .reduce((acc, cur) => acc + cur, 0);
   labelSumOut.textContent = `${Math.abs(out)}€
   `;
+  const interest = movements
+    .filter((mov) => mov > 0)
+    .map((mov) => (mov * 1.2) / 100)
+    .filter((mov) => mov >= 1)
+    .reduce((acc, cur) => acc + cur, 0);
+  labelSumInterest.textContent = `${interest}€`;
 };
-clacDisplaySummary(account1.movements);
+calcDisplaySummary(account1.movements);
+const account = accounts.find((acc) => acc.owner === "Jessica Davis");
+console.log(account);
