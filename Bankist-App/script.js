@@ -134,6 +134,12 @@ const clacDisplaySummary = function (movements) {
   const incomes = movements
     .filter((map) => map > 0)
     .reduce((acc, cur) => acc + cur, 0);
-  labelSumIn.textContent = incomes;
+  labelSumIn.textContent = `${incomes}€
+  `;
+  const out = movements
+    .filter((map) => map < 0)
+    .reduce((acc, cur) => acc + cur, 0);
+  labelSumOut.textContent = `${Math.abs(out)}€
+  `;
 };
 clacDisplaySummary(account1.movements);
