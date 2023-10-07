@@ -76,9 +76,10 @@ const currencies = new Map([
 ]);
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
-const displayMovementes = function (movements) {
+const displayMovementes = function (movements, sort = false) {
   containerMovements.innerHTML = " ";
-  movements.forEach(function (mov, i) {
+  const movs = sort ? movements.slice().sort((a, b) => a - b) : movements;
+  movs.forEach(function (mov, i) {
     const type = mov > 0 ? "deposit" : "withdrawal";
     const html = `<div class="movements__row">
     <div class="movements__type movements__type--${type}">${i + 1}${type}</div>
@@ -126,6 +127,12 @@ const calcAverage = function (ages) {
   );
   console.log(Average);
 };
+let sorted = false;
+btnSort.addEventListener("click", function (e) {
+  e.preventDefault();
+  displayMovementes(currentAccount.movements, !sorted);
+  sorted = !sorted;
+});
 /////////////////////////////////////////////////
 const avg1 = calcAverage([5, 2, 4, 1, 15, 8, 3]);
 const totalDeposited = movements
