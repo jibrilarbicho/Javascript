@@ -64,7 +64,11 @@ const inputClosePin = document.querySelector(".form__input--pin");
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
-
+const UpdateUI = function (acc) {
+  calcPrintBalance(currentAccount);
+  displayMovementes(currentAccount.movements);
+  calcDisplaySummary(currentAccount);
+};
 const currencies = new Map([
   ["USD", "United States dollar"],
   ["EUR", "Euro"],
@@ -88,9 +92,9 @@ const EuroUSD = 1.1;
 const movementsUSDfor = [];
 for (const mov of movements) movementsUSDfor.push(mov * EuroUSD);
 console.log(movementsUSDfor);
-const calcPrintBalance = function (movements) {
-  const balance = movements.reduce((acc, cur) => acc + cur);
-  labelBalance.textContent = `${balance}€`;
+const calcPrintBalance = function (acc) {
+  acc.balance = acc.movements.reduce((ac, cur) => ac + cur);
+  labelBalance.textContent = `${acc.balance}€`;
 };
 
 const createUsernames = function (accs) {
@@ -162,12 +166,27 @@ btnLogin.addEventListener("click", function (e) {
     // console.log("Login");
     labelWelcome.textContent = `welcome ${currentAccount.owner.split(" ")[0]}`;
     containerApp.style.opacity = 1;
-
-    calcPrintBalance(currentAccount.movements);
-    displayMovementes(currentAccount.movements);
-    calcDisplaySummary(currentAccount);
+    UpdateUI(currentAccount);
 
     inputLoginPin.value = inputLoginUsername.value = "";
     inputLoginPin.blur(); //to removw blinking of the cursor
   }
+});
+btnTransfer.addEventListener("click", function (e) {
+  e.preventDefault();
+  const Amount = Number(inputTransferAmount.value);
+  const receiverAccount = accounts.find(
+    (acc) => acc.username === inputTransferTo.value
+  );
+  if (
+    Amount > 0 &&
+    receiverAccount &&
+    currentAccount.balance >= 0 &&
+    receiverAccount?.username !== currentAccount.username
+  ) {
+    currentAccount.movements.push(-Amount);
+    receiverAccount.movements.push(Amount);
+    UpdateUI(currentAccount);
+  }
+  inputTransferAmount.value = inputTransferTo.value = "";
 });
