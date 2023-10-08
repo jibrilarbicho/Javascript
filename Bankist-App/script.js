@@ -292,10 +292,12 @@ btnLoan.addEventListener("click", function (e) {
   e.preventDefault();
   const amount = Math.floor(Number(inputLoanAmount.value));
   if (amount > 0 && currentAccount.movements.some((mov) => mov * 0.1)) {
-    currentAccount.movements.push(amount);
-    currentAccount.movementDtaes.push(new Date().toISOString());
+    setTimeout(function () {
+      currentAccount.movements.push(amount);
+      currentAccount.movementDtaes.push(new Date().toISOString());
 
-    UpdateUI(currentAccount);
+      UpdateUI(currentAccount);
+    }, 2500);
   }
   inputLoanAmount.value = "";
 });
