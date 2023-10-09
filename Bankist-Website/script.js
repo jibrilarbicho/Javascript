@@ -71,3 +71,20 @@ btnScrollTo.addEventListener("click", function () {
   //// thevmodern way this the following one
   section1.scrollIntoView({ behavior: "smooth" });
 });
+const h1 = document.querySelector("h1");
+
+// h1.addEventListener("mouseenter", function () {
+//   alert("Great:You are reading the header");
+// });
+// h1.onmouseenter = function () {
+//   alert("hello");
+// };
+//the above two event listener on one elemt are used for wehn we want to add more than one event listener on one
+// h1.onmouseenter = function () {
+//   alert("hello");
+// };
+const her = function () {
+  alert("Great:You are reading the header");
+  h1.removeEventListener("mouseenter", her); //to listen event once only
+};
+h1.addEventListener("mouseenter", her);
