@@ -31,25 +31,43 @@ document.addEventListener("keydown", function (e) {
     closeModal();
   }
 });
-const header = document.querySelector(".header");
-const message = document.createElement("div");
+// const header = document.querySelector(".header");
+// const message = document.createElement("div");
 
-message.classList.add("cookie-message");
-message.innerHTML =
-  "wel come to Bankist website.<button class=' btn btn--close-cookie'>Got IT<button/>";
+// message.classList.add("cookie-message");
+// message.innerHTML =
+//   "wel come to Bankist website.<button class=' btn btn--close-cookie'>Got IT<button/>";
 // header.prepend(message);
-header.append(message);
+// header.append(message);
 // header.append(message.cloneNode(true));
 // header.before(message)
 // header.after(message)
-document
-  .querySelector(".btn--close-cookie")
-  .addEventListener("click", function () {
-    // message.remove(); //this is recent method to remove
-    message.parentElement.removeChild(message); //this the method before remove() called DOM traversing
-  });
+// document
+//   .querySelector(".btn--close-cookie")
+//   .addEventListener("click", function () {
+//     // message.remove(); //this is recent method to remove
+//     message.parentElement.removeChild(message); //this the method before remove() called DOM traversing
+//   });
 // CSS variables are equivalent to documentElemnt in js
-document.documentElement.style.setProperty("--color-primary", "orangered");
-const logo = document.querySelector(".nav__logo");
-logo.setAttribute("company", "Bankist");
-console.log(logo.getAttribute("src"));
+// document.documentElement.style.setProperty("--color-primary", "orangered");
+// const logo = document.querySelector(".nav__logo");
+// logo.setAttribute("company", "Bankist");
+// console.log(logo.getAttribute("src"));
+const btnScrollTo = document.querySelector(".btn--scroll-to");
+const section1 = document.querySelector("#section--1");
+btnScrollTo.addEventListener("click", function () {
+  const s1Scords = section1.getBoundingClientRect();
+  console.log(s1Scords);
+  // window.scrollTo(
+  //   s1Scords.left + window.pageXOffset,
+  //   s1Scords.top + window.pageYOffset
+  // );
+  // window.scrollTo({//those tow are the oldest way
+  //   left: s1Scords.left + window.pageXOffset,
+  //   top: s1Scords.top + window.pageYOffset,
+  //   behavior: "smooth",
+  // });
+
+  //// thevmodern way this the following one
+  section1.scrollIntoView({ behavior: "smooth" });
+});
