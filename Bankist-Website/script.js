@@ -88,3 +88,48 @@ const her = function () {
   h1.removeEventListener("mouseenter", her); //to listen event once only
 };
 h1.addEventListener("mouseenter", her);
+
+// const random = (min, max) => Math.floor(Math.random() * (max - min + 1) + min);
+
+// const randomColor = () =>
+//   `rgb(${random(0, 255)},${random(0, 255)},${random(0, 255)})`;
+// document.querySelector(".nav__link").addEventListener("click", function (e) {
+//   console.log("ki");
+//   this.style.backgroundColor = randomColor();
+// });
+// const randomInt = (min, max) =>
+//   Math.floor(Math.random() * (max - min + 1) + min);
+// const randomColor = () =>
+//   `rgb(${randomInt(0, 255)},${randomInt(0, 255)}, $ {randomInt(0, 255)})`;
+// document.querySelector(".nav___link").addEventListener("click", function (e) {
+//   this.style.backgroundColor = randomColor();
+// });
+// document.querySelector(".nav____links").addEventListener("click", function (e) {
+//   this.style.backgroundColor = randomColor();
+// });
+// document.querySelector(".nav").addEventListener("click", function (e) {
+//   this.style.backgroundColor = randomColor();
+// });
+const randomInt = (min, max) =>
+  Math.floor(Math.random() * (max - min + 1) + min);
+
+const randomColor = () =>
+  `rgb(${randomInt(0, 255)},${randomInt(0, 255)},${randomInt(0, 255)})`;
+
+document.querySelector(".nav__link").addEventListener("click", function (e) {
+  e.preventDefault();
+
+  this.style.backgroundColor = randomColor();
+  // e.stopPropagation();// to stop propagation
+});
+
+document.querySelector(".nav__links").addEventListener("click", function (e) {
+  e.preventDefault();
+
+  this.style.backgroundColor = randomColor();
+});
+
+document.querySelector(".nav").addEventListener("click", function (e) {
+  e.preventDefault();
+  this.style.backgroundColor = randomColor();
+});
