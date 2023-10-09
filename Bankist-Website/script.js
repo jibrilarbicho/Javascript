@@ -48,3 +48,8 @@ document
     // message.remove(); //this is recent method to remove
     message.parentElement.removeChild(message); //this the method before remove() called DOM traversing
   });
+// CSS variables are equivalent to documentElemnt in js
+document.documentElement.style.setProperty("--color-primary", "orangered");
+const logo = document.querySelector(".nav__logo");
+logo.setAttribute("company", "Bankist");
+console.log(logo.getAttribute("src"));
