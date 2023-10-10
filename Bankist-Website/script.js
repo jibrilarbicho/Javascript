@@ -7,7 +7,7 @@ const modal = document.querySelector(".modal");
 const overlay = document.querySelector(".overlay");
 const btnCloseModal = document.querySelector(".btn--close-modal");
 const btnsOpenModal = document.querySelectorAll(".btn--show-modal");
-
+const nav = document.querySelector(".nav");
 const openModal = function (e) {
   e.preventDefault();
   modal.classList.remove("hidden");
@@ -166,4 +166,54 @@ tabContainer.addEventListener("click", function (e) {
   document
     .querySelector(`.operations__content--${clicked.dataset.tab}`)
     .classList.add("operations__content--active");
+});
+nav.addEventListener("mouseover", function () {});
+nav.addEventListener("mouseover", function () {});
+window.addEventListener("scroll", function () {
+  const header = document.querySelector(".nav");
+  header.classList.toggle("sticky", window.scrollY > 100);
+});
+const slider = document.querySelector(".slider");
+// slider.style.overflow = "visible";
+let currentSlide = 0;
+const slides = document.querySelectorAll(".slide");
+const maxSlides = slides.length;
+const dotContainer = document.querySelector(".dots");
+const buttonright = document.querySelector(".slider__btn--right");
+const buttonleft = document.querySelector(".slider__btn--left");
+const gotoSlide = function (slide) {
+  slides.forEach((e, i) => {
+    e.style.transform = `translateX(${(i - slide) * 100}%)`;
+  });
+};
+gotoSlide(0);
+
+const nextSlide = function () {
+  if (currentSlide === maxSlides - 1) {
+    currentSlide = 0;
+  } else {
+    currentSlide++;
+  }
+  gotoSlide(currentSlide);
+};
+const prevSlide = function () {
+  if (currentSlide === 0) {
+    currentSlide = maxSlides - 1;
+  } else {
+    currentSlide--;
+  }
+  gotoSlide(currentSlide);
+};
+
+buttonright.addEventListener("click", nextSlide);
+buttonleft.addEventListener("click", prevSlide);
+document.addEventListener("keydown", function (e) {
+  if (e.key === "ArrowLeft") {
+    prevSlide();
+  }
+});
+document.addEventListener("keydown", function (e) {
+  if (e.key === "ArrowRight") {
+    nextSlide();
+  }
 });
