@@ -37,13 +37,29 @@ bmw.brake();
 bmw.Speed();
 //ES6 Classes
 class PersonCl {
-  constructor(firstName, birthYear) {
-    this.firstName = firstName;
+  constructor(fullName, birthYear) {
+    this.fullName = fullName;
     this.birthYear = birthYear;
   }
   CalcAge() {
     console.log(2037 - this.birthYear);
   }
+
+  get age() {
+    return 2037 - this.birthYear;
+  }
+  set fullName(name) {
+    console.log(name);
+
+    if (name.includes(" ")) {
+      this._fullName = name;
+    } else alert(`${name} is not a full Name`);
+  }
+  get fullName() {
+    return this._this.fullName;
+  }
 }
-const jessica = new PersonCl("jessica");
+const jessica = new PersonCl("jessica ", 2030);
 console.log(jessica);
+jessica.CalcAge();
+console.log(jessica.age);
