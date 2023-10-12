@@ -1,17 +1,17 @@
 "use  strict";
-const person = function (firstName, birthYear) {
+const Person = function (firstName, birthYear) {
   this.fisrtName = firstName;
   this.birthYear = birthYear;
 };
-const jemal = new person("jemal", 1993);
+const jemal = new Person("jemal", 1993);
 console.log(jemal);
-const jems = new person("jems", 1993);
+const jems = new Person("jems", 1993);
 console.log(jems);
-person.prototype.specis = "Hom Sapiens";
+Person.prototype.specis = "Hom Sapiens";
 
-const gi = new person("ji", 6577);
+const gi = new Person("ji", 6577);
 console.log(gi);
-person.prototype.CalcAge = function () {
+Person.prototype.CalcAge = function () {
   console.log(2004 - this.birthYear);
 };
 jemal.CalcAge();
@@ -63,3 +63,9 @@ const jessica = new PersonCl("jessica ", 2030);
 console.log(jessica);
 jessica.CalcAge();
 console.log(jessica.age);
+//static methods
+Person.hey = function () {
+  console.log("hey there 👏");
+};
+Person.hey(); // it is not inherited
+// jonas.hey(); jonas object cannot inherit it
