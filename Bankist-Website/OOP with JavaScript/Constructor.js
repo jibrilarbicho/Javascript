@@ -35,3 +35,15 @@ bmw.Speed();
 bmw.Speed();
 bmw.brake();
 bmw.Speed();
+//ES6 Classes
+class PersonCl {
+  constructor(firstName, birthYear) {
+    this.firstName = firstName;
+    this.birthYear = birthYear;
+  }
+  CalcAge() {
+    console.log(2037 - this.birthYear);
+  }
+}
+const jessica = new PersonCl("jessica");
+console.log(jessica);
