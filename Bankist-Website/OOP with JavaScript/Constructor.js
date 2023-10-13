@@ -69,3 +69,25 @@ Person.hey = function () {
 };
 Person.hey(); // it is not inherited
 // jonas.hey(); jonas object cannot inherit it
+//inheritance between classes
+const Ev = function (make, speed, charge) {
+  Car.call(this, make, speed);
+  this.charge = charge;
+};
+Ev.prototype = Object.create(Car.prototype);
+
+Ev.prototype.chargeTo = function (charg) {
+  this.charge = charg;
+};
+Ev.prototype.Speed = function () {
+  this.speed += 20;
+  this.charge--;
+  console.log(
+    `${this.make} is going at speed of ${this.speed} with a charge of ${this.charge}`
+  );
+};
+const tesla = new Ev("tesla", 120, 23);
+tesla.chargeTo(90);
+console.log(tesla);
+tesla.Speed();
+tesla.brake();
