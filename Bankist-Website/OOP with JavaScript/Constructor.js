@@ -58,18 +58,22 @@ class PersonCl {
   get fullName() {
     return this._this.fullName;
   }
+  static hey() {
+    console.log("hey there 👏");
+  }
 }
 const jessica = new PersonCl("jessica ", 2030);
 console.log(jessica);
 jessica.CalcAge();
 console.log(jessica.age);
 //static methods
-Person.hey = function () {
+PersonCl.hey = function () {
   console.log("hey there 👏");
 };
-Person.hey(); // it is not inherited
+PersonCl.hey(); // it is not inherited
 // jonas.hey(); jonas object cannot inherit it
 //inheritance between classes
+PersonCl.hey();
 const Ev = function (make, speed, charge) {
   Car.call(this, make, speed);
   this.charge = charge;
@@ -91,3 +95,10 @@ tesla.chargeTo(90);
 console.log(tesla);
 tesla.Speed();
 tesla.brake();
+class studentCl extends PersonCl {
+  constructor(fullName, birthYear, course) {
+    super(fullName, birthYear);
+    this.course = course;
+  }
+}
+const martha = new studentCl("martha jonas", 2001, "computer Science");
